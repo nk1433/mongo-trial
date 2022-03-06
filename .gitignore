@@ -16,6 +16,7 @@
 !.editorconfig
 !.eslint*
 !.vscode
+!.env
 .vscode/*
 !.vscode/launch.json
 /dist
