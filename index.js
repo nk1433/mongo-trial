@@ -1,11 +1,11 @@
 const express = require('express');
-const { connect } = require('./lib/mongooseManager');
+const { connectDb } = require('./lib/mongooseManager');
 const { getData } = require('./lib/helpers');
 
 const app = express();
 const { DATABASE, PORT } = getData();
 
-connect(DATABASE);
+connectDb(DATABASE);
 
 app.get('/', (req, res) => {
 	res.send('hello');
