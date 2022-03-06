@@ -1,25 +1,17 @@
-/* eslint-disable no-console */
 const express = require('express');
-const mongoose = require('mongoose');
-const { config } = require('dotenv');
+const { connect } = require('./lib/mongooseManager');
+const { getData } = require('./lib/helpers');
 
-config({ path: './.env' });
-const {
-	env: {
-		PORT = '3500',
-		DATABASE = 'mongod://localhost:27017/natours',
-	},
-} = process;
 const app = express();
+const { DATABASE, PORT } = getData();
 
-mongoose.connect(DATABASE)
-	.then(() => console.log('Successfully connected to db.'))
-	.catch(() => console.log('Error communicating with db.'));
+connect(DATABASE);
 
 app.get('/', (req, res) => {
 	res.send('hello');
 });
 
 app.listen(PORT, () => {
+	// eslint-disable-next-line no-console
 	console.log(`listening to ${ PORT }`);
 });
