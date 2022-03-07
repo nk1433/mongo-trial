@@ -5,7 +5,7 @@ const {
 	connectDb, createSchema, createModelInstance,
 	createModel,
 } = require('./lib/mongooseManager');
-const normalizeConfig = require('./lib/helpers');
+const normalizeConfig = require('./lib/normalizer');
 
 const app = express();
 const { DATABASE, PORT } = normalizeConfig(process.env);
@@ -30,9 +30,9 @@ const tourSpec = {
 const tourSchema = createSchema(tourSpec);
 const Tour = createModel('Tour', tourSchema);
 const testTour = createModelInstance(Tour, {
-	name: 'Manali',
-	rating: 9,
-	price: 25000,
+	name: 'kodaicanal',
+	rating: 7.5,
+	price: 7500,
 });
 
 // TODO: Unable to destructure save.
