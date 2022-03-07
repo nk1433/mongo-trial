@@ -4,10 +4,10 @@ const {
 	connectDb, createSchema, createModelInstance,
 	createModel,
 } = require('./lib/mongooseManager');
-const { getData } = require('./lib/helpers');
+const normalizeConfig = require('./lib/helpers');
 
 const app = express();
-const { DATABASE, PORT } = getData();
+const { DATABASE, PORT } = normalizeConfig(process.env);
 
 connectDb(DATABASE);
 
