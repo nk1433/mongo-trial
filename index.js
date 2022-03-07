@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+// TODO: Unable to run app on destructuring get, listen.
 const express = require('express');
 const {
 	connectDb, createSchema, createModelInstance,
@@ -26,17 +27,15 @@ const tourSpec = {
 		required: true,
 	},
 };
-
 const tourSchema = createSchema(tourSpec);
 const Tour = createModel('Tour', tourSchema);
-
 const testTour = createModelInstance(Tour, {
 	name: 'Manali',
 	rating: 9,
 	price: 25000,
 });
 
-// TODO: unable to destructure save.
+// TODO: Unable to destructure save.
 testTour.save().then((doc) => console.log(doc))
 	.catch((err) => console.log(err));
 
