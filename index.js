@@ -10,6 +10,7 @@ const { DATABASE, PORT } = normalizeConfig(process.env);
 
 connectDb(DATABASE);
 
+app.use(express.json());
 app.use(tourRouter);
 
 app.listen(PORT, () => peek(`Server is running @${ PORT }`));
