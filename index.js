@@ -6,6 +6,7 @@ const {
 	createModel,
 } = require('./lib/mongooseManager');
 const normalizeConfig = require('./lib/normalizer');
+const tourRouter = require('./routers/tours');
 
 const app = express();
 const { DATABASE, PORT } = normalizeConfig(process.env);
@@ -39,9 +40,7 @@ const testTour = createModelInstance(Tour, {
 testTour.save().then((doc) => console.log(doc))
 	.catch((err) => console.log(err));
 
-app.get('/', (req, res) => {
-	res.send('hello');
-});
+app.use(tourRouter);
 
 app.listen(PORT, () => {
 	// eslint-disable-next-line no-console
