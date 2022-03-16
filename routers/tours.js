@@ -1,8 +1,11 @@
 const { Router } = require('express');
-const { welcome } = require('../controllers/tours');
+const { welcome, addRecord } = require('../controllers/tours');
 
 const router = Router();
 
-router.route('/').get(welcome);
+router
+	.route('/')
+	.get(welcome)
+	.post(addRecord);
 
 module.exports = router;
