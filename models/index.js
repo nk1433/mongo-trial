@@ -1,3 +1,6 @@
+/*
+NOTE: Think of restructure modelManager with create and getModel.
+*/
 const { createSchema, createModel } = require('../lib/mongooseManager');
 
 const modelManager = ({ schema, name }) => {
