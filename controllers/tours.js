@@ -34,6 +34,8 @@ const tourController = (() => {
 					runValidators: true,
 				},
 			)),
+		removeTour: async ({ params: { id }}, res) =>
+			res.json(await Tour.findByIdAndDelete(id)),
 	};
 })();
 

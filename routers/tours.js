@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const {
-	getAllTours, addRecord, getTour, updateTour,
+	getAllTours, addRecord, getTour, updateTour, removeTour,
 } = require('../controllers/tours');
 
 const router = Router();
@@ -13,6 +13,7 @@ router
 router
 	.route('/:id')
 	.get(getTour)
-	.patch(updateTour);
+	.patch(updateTour)
+	.delete(removeTour);
 
 module.exports = router;
