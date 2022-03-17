@@ -21,14 +21,8 @@ const tourController = (() => {
 	});
 
 	return {
-		welcome: (req, res) => res.send('hello'),
-		addRecord: async ({ body }, res) => {
-			// eslint-disable-next-line no-console
-			console.log(body);
-			const record = await Tour.create(body);
-
-			return res.json(record);
-		},
+		addRecord: async ({ body }, res) =>
+			res.json(await Tour.create(body)),
 	};
 })();
 
