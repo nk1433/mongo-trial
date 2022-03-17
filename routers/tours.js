@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const {
-	getAllTours, addRecord, getTour, updateTour, removeTour,
+	getAllTours, addTour, getTour, updateTour, removeTour,
 } = require('../controllers/tours');
 
 const router = Router();
@@ -8,7 +8,7 @@ const router = Router();
 router
 	.route('/')
 	.get(getAllTours)
-	.post(addRecord);
+	.post(addTour);
 
 router
 	.route('/:id')

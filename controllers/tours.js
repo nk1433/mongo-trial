@@ -21,7 +21,7 @@ const tourController = (() => {
 	});
 
 	return {
-		addRecord: async ({ body }, res) =>
+		addTour: async ({ body }, res) =>
 			res.json(await Tour.create(body)),
 		getAllTours: async (req, res) =>
 			res.json(await Tour.find()),
