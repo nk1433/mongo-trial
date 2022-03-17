@@ -25,6 +25,15 @@ const tourController = (() => {
 			res.json(await Tour.create(body)),
 		getAllTours: async (req, res) =>
 			res.json(await Tour.find()),
+		getTour: async ({ params: { id }}, res) =>
+			res.json(await Tour.findById(id)),
+		updateTour: async ({ body, params: { id }}, res) =>
+			res.json(await Tour.findByIdAndUpdate(
+				id, body, {
+					new: true,
+					runValidators: true,
+				},
+			)),
 	};
 })();
 
