@@ -25,6 +25,7 @@ const tourController = (() => {
 		// TODO: Abstract common apis.
 		addTour: async ({ body }, res) =>
 			res.json(await Tour.create(body)),
+		// TODO: Try to get empty results from find.
 		getAllTours: async ({ query }, res) => {
 			res.json(await chain(transform(query, Tour.find(query)),
 				Tour.find(query)));
