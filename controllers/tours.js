@@ -1,4 +1,5 @@
 const modelManager = require('../models');
+const { chain, transform } = require('../lib/helpers');
 
 const tourController = (() => {
 	const { Tour } = modelManager({
@@ -24,8 +25,10 @@ const tourController = (() => {
 		// TODO: Abstract common apis.
 		addTour: async ({ body }, res) =>
 			res.json(await Tour.create(body)),
-		getAllTours: async ({ query }, res) =>
-			res.json(await Tour.find(query)),
+		getAllTours: async ({ query }, res) => {
+			res.json(await chain(transform(query, Tour.find(query)),
+				Tour.find(query)));
+		},
 		getTour: async ({ params: { id }}, res) =>
 			res.json(await Tour.findById(id)),
 		updateTour: async ({ body, params: { id }}, res) =>
