@@ -21,6 +21,7 @@ const tourController = (() => {
 	});
 
 	return {
+		// TODO: Abstract common apis.
 		addTour: async ({ body }, res) =>
 			res.json(await Tour.create(body)),
 		getAllTours: async (req, res) =>
