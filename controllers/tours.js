@@ -24,8 +24,8 @@ const tourController = (() => {
 		// TODO: Abstract common apis.
 		addTour: async ({ body }, res) =>
 			res.json(await Tour.create(body)),
-		getAllTours: async (req, res) =>
-			res.json(await Tour.find()),
+		getAllTours: async ({ query }, res) =>
+			res.json(await Tour.find(query)),
 		getTour: async ({ params: { id }}, res) =>
 			res.json(await Tour.findById(id)),
 		updateTour: async ({ body, params: { id }}, res) =>
