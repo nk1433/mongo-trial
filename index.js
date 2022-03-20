@@ -1,12 +1,14 @@
 // TODO: Unable to run app on destructuring get, listen.
 const express = require('express');
+const { config } = require('dotenv');
 const { peek } = require('@laufire/utils/debug');
 const {	connectDb } = require('./lib/mongooseManager');
-const normalizeConfig = require('./lib/normalizer');
+const { config: configNormalizer } = require('./lib/normalizer');
 const tourRouter = require('./routers/tours');
 
+config({ path: './.env' });
 const app = express();
-const { DATABASE, PORT } = normalizeConfig(process.env);
+const { DATABASE, PORT } = configNormalizer(process.env);
 
 connectDb(DATABASE);
 
