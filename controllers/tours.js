@@ -1,5 +1,6 @@
 const modelManager = require('../models');
-const { chain, transform } = require('../lib/helpers');
+const { chain } = require('../lib/helpers');
+const { query: queryNormalizer } = require('../lib/normalizer');
 
 const tourController = (() => {
 	const { Tour } = modelManager({
@@ -27,8 +28,9 @@ const tourController = (() => {
 			res.json(await Tour.create(body)),
 		// TODO: Try to get empty results from find.
 		getAllTours: async ({ query }, res) => {
-			res.json(await chain(transform(query, Tour.find(query)),
-				Tour.find(query)));
+			const { filters, matcher } = queryNormalizer(query);
+
+			res.json(await chain(filters, Tour.find(matcher)));
 		},
 		getTour: async ({ params: { id }}, res) =>
 			res.json(await Tour.findById(id)),
